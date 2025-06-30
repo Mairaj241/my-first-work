@@ -1,0 +1,70 @@
+PYTHON CODE:
+
+menu = {
+    1: {"name": "Coffee", "price": 180},
+    2: {"name": "Tea", "price": 100},
+    3: {"name": "Cappuccino", "price": 200},
+    4: {"name": "Latte", "price": 220},
+    5: {"name": "Espresso", "price": 150},
+    6: {"name": "Hot Chocolate", "price": 250},
+    7: {"name": "Green Tea", "price": 120}
+}
+
+def show_menu():
+    print ("\n--- Menu ---")
+    for i, item in menu.items():
+        print(f"{i}. {item['name']} - Rs{item['price']}")
+    print ("----------------------")
+
+def take_order():
+    order = []
+    while True:
+        choice = input ("Enter item number (or type 'done' to finish): ").strip()
+        if choice.lower() == 'done':
+            break
+        if choice.isdigit():
+            choice = int(choice)
+            if choice in menu:
+                qty = input (f"Enter quantity for {menu[choice]['name']}: ").strip()
+                if qty.isdigit() and int(qty) > 0:
+                    order.append((choice, int(qty)))
+                else:
+                    print ("Invalid quantity. Please enter a positive number.")
+else :
+                      print ("Item number not found. Please choose from the menu.")
+        else:
+            print ("Invalid input. Please enter a number or 'done'.")
+    return order
+
+def bill(order):
+    total = 0
+    print ("\n--- Bill ---")
+    for i, q in order:
+        item = menu[i]
+        price = item['price'] * q
+        total += price
+        print(f"{item['name']} x{q} = Rs{price}")
+    print (f"Total Amount: Rs{total}")
+    print ("----------------------")
+  # Main loop
+while True:
+    print ("\n1. Show Menu\n2. Order\n3. Exit")
+    choice = input ("Choose an option (1/2/3): ").strip()
+    if choice == '1':
+        show_menu()
+    elif choice == '2':
+        show_menu()
+        order = take_order()
+        if order:
+            bill(order)
+        else:
+            print ("No items were ordered.")
+    elif choice == '3':
+             print ("Thank you for visiting! Have a nice day.")
+   
+             break
+              else:
+                  print ("("Invalid choicePlease select 1, 2, or 3.")
+
+
+
